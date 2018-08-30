@@ -1,0 +1,68 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    //this works for debugging an app. the cmd generated in debug console is 'node --inspect-brk=3538 app/index.js'
+        {
+            "name": "Debug NPM script",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/app/index.js",
+            "args": [
+            ],
+          },
+        //this works the same as running script -> "dev": "nodemon ./app"
+        {
+            "name": "Debug nodemon",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/.bin/nodemon",
+            "args": [
+                "${workspaceRoot}/app/index.js"
+            ],
+          },
+    // this one is so simple but it does work...
+        {
+            "name": "Debug Jest Tests",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/.bin/jest",
+            "args": [
+                "--runInBand",
+                "--no-cache",
+                "--watchAll",
+            ],
+          }
+    // recommended by Jest Doc but does not work, port does not match I guess.      
+    //   {
+    //     "name": "Debug Jest Tests",
+    //     "type": "node",
+    //     "request": "launch",
+    //     "runtimeArgs": [
+    //       "--inspect-brk",
+    //       "${workspaceRoot}/node_modules/.bin/jest",
+    //       "--runInBand",
+    //       "--watchAll"
+    //     ],
+    //     "console": "integratedTerminal",
+    //     "internalConsoleOptions": "neverOpen",
+    //   }
+
+        // this one works as well.
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch Tests",
+        //     "program": "${workspaceRoot}/node_modules/.bin/jest",
+        //     "args": [
+        //         "--runInBand",
+        //         "--no-cache",
+        //         "--watchAll",
+        //     ],
+        //     "runtimeArgs": [
+        //         "--inspect-brk=127.0.0.1:5858"
+        //     ],
+        //     "port": 5858
+        // }
+    ]
+  }
+
